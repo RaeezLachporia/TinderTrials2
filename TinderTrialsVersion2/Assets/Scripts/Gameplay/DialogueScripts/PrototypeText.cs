@@ -5,12 +5,32 @@ using UnityEngine.UI;
 
 public class PrototypeText : MonoBehaviour
 {
-    public Text textField;
-    public void SetText(string text)
+    private Queue<string> sentences;
+     void Start()
     {
-        textField.text = text;
+        sentences = new Queue<string>();
     }
-    
 
-    
+    public void StartDialogue(Dialogue dialogue)
+    {
+        Debug.Log("Starting a convo with " + dialogue.name);
+
+        sentences.Clear();
+
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        
+    }
+    public void displayNextSentence()
+    {
+        if (sentences.Count==0)
+        {
+
+        }
+    }
+
+
 }
